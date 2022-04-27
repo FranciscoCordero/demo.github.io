@@ -39,7 +39,7 @@ const customTitle = {
     if (opts.display) {
       ctx.fillStyle = color || Chart.defaults.color
       ctx.font = font || '12px "Helvetica Neue", Helvetica, Arial, sans-serif'
-      ctx.fillText(text, 3, (top + bottom) / 8)
+      ctx.fillText(text, 3, top )
     }
   }
 }  
