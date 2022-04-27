@@ -1,3 +1,50 @@
+const customTitle = {
+  id: 'customTitle',
+  beforeLayout: (chart, args, opts) => {
+    const {
+      display,
+      font
+    } = opts;
+    if (!display) {
+        return;
+    }
+  
+    const {
+      ctx
+    } = chart;
+    ctx.font = font || '12px "Helvetica Neue", Helvetica, Arial, sans-serif'
+  
+    const {
+       width
+    } = ctx.measureText(opts.text);
+    chart.options.layout.padding.left = width * 1.1;
+  },
+  afterDraw: (chart, args, opts) => {
+    const {
+      font,
+      text,
+      color,
+      align
+    } = opts;
+    const {
+      ctx,
+      chartArea: {
+        top,
+        bottom,
+        left,
+        right
+      }
+    } = chart;
+  
+    if (opts.display) {
+      ctx.fillStyle = color || Chart.defaults.color
+      ctx.font = font || '12px "Helvetica Neue", Helvetica, Arial, sans-serif'
+      ctx.fillText(text, 3, (top + bottom) / 8)
+    }
+  }
+}  
+  
+  
   const config = {  
     type: 'line',
     data: {
@@ -18,34 +65,55 @@
           grid: {
             borderColor: '#747272',
             color : '#747272',
-          } 
+          },
+          ticks: {
+            font: {
+              size: 14,
+            }
+          },
         },
         y :{
           grid: {
             borderColor: '#747272',
             color : '#747272',
-          } 
+          },
+          ticks: {
+            font: {
+              size: 14,
+            }
+          },
+          title: {
+            align: 'end',
+            display: false,
+            text: 'ads',
+          }
         }
       },
       fill: false,
-        plugins: {
-            legend:{
-              display: true,
+      plugins: {
+        customTitle: {
+          display: true,
+          text: 'I[]',
+          color: '',
+        },
+        legend:{
+          display: true,
+        },
+        title: {
+          display: true,
+          text: 'Control Sat',
+            font:{
+              size: 16,
+              family: 'Arial',
             },
-            title: {
-              display: true,
-              text: 'Control Sat',
-                font:{
-                  size: 16,
-                  family: 'Arial',
-              },
-            },
-            subtitle:{
-              display: true,
-              text: 'Click to show',
-            },
-        }
-    }
+        },
+        subtitle:{
+          display: true,
+          text: 'Click to show',
+        },
+      }
+    },
+    plugins: [customTitle]
   };
   
   
@@ -63,5 +131,6 @@
     });
     myChart.update();
   }
+  
   
   
