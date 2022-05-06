@@ -24,7 +24,6 @@ const customTitle = {
       font,
       text,
       color,
-      align
     } = opts;
     const {
       ctx,
