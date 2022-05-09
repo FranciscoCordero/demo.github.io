@@ -68,7 +68,7 @@ const customTitle = {
           },
           ticks: {
             font: {
-              size: 14,
+              size: 16,
             }
           },
         },
@@ -80,7 +80,7 @@ const customTitle = {
           },
           ticks: {
             font: {
-              size: 14,
+              size: 16,
             }
           },
           title: {
