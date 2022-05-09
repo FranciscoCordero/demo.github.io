@@ -63,7 +63,8 @@ const customTitle = {
         x :{
           grid: {
             borderColor: '#747272',
-            color : '#747272',
+            color : '#747272',  
+            lineWidth: 2,
           },
           ticks: {
             font: {
@@ -75,6 +76,7 @@ const customTitle = {
           grid: {
             borderColor: '#747272',
             color : '#747272',
+            lineWidth: 2,
           },
           ticks: {
             font: {
@@ -90,9 +92,9 @@ const customTitle = {
       },
       fill: false,
       plugins: {
-        customTitle: {
+        customTitle: {            // Titulo eje y
           display: true,
-          text: 'I[]',
+          text: '',
           color: '',
         },
         legend:{
